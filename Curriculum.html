@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Curriculum - Crevo Academy</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4a1f88",
+                        "background-light": "#cbb7e9",
+                        "background-dark": "#FF6B6B",
+                        "text-main": "#1F1F1F",
+                        "text-muted": "#1F1F1F",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-white transition-colors duration-200">
+
+    <!-- ========================================
+         MOBILE MENU OVERLAY (Slide from Left)
+    ========================================= -->
+    <div id="mobileMenu" class="fixed inset-0 z-[100] pointer-events-none">
+        <!-- Backdrop -->
+        <div id="menuBackdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+        
+        <!-- Menu Panel -->
+        <div id="menuPanel" class="absolute top-0 left-0 h-full w-[280px] bg-white dark:bg-gray-900 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col">
+            
+            <!-- Menu Header -->
+            <div class="flex items-center justify-between p-6 border-b border-black/5 dark:border-white/10">
+                <div class="flex items-center gap-3 text-text-main dark:text-white">
+                    <div class="flex size-8 items-center justify-center rounded-full bg-primary text-black">
+                        <span class="material-symbols-outlined text-xl">code_blocks</span>
+                    </div>
+                    <h2 class="text-lg font-bold">Crevo Academy</h2>
+                </div>
+                <button id="closeMenu" class="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            
+            <!-- Menu Links -->
+            <nav class="flex-1 p-6 space-y-2">
+                <a href="./index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-primary/10 transition-colors text-text-main dark:text-white">
+                    <span class="material-symbols-outlined">home</span>
+                    <span class="font-medium">Home</span>
+                </a>
+                <a href="./about.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-primary/10 transition-colors text-text-main dark:text-white">
+                    <span class="material-symbols-outlined">info</span>
+                    <span class="font-medium">About</span>
+                </a>
+                <a href="./curriculum.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-primary/10 transition-colors text-text-main dark:text-white">
+                    <span class="material-symbols-outlined">school</span>
+                    <span class="font-medium">Curriculum</span>
+                </a>
+                <a href="./contact.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-primary/10 transition-colors text-text-main dark:text-white">
+                    <span class="material-symbols-outlined">mail</span>
+                    <span class="font-medium">Contact</span>
+                </a>
+            </nav>
+            
+            <!-- Menu Footer CTA -->
+            <div class="p-6 border-t border-black/5 dark:border-white/10">
+                <button class="w-full h-12 rounded-full bg-primary text-black text-sm font-bold hover:bg-purple-400 transition-colors">
+                    ENROLL NOW
+                </button>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ========================================
+         NAVIGATION BAR
+    ========================================= -->
+    <div class="fixed top-0 left-0 right-0 z-50 flex w-full justify-center px-4 py-4">
+        <header class="flex w-full max-w-[960px] items-center justify-between rounded-full bg-white/80 backdrop-blur-md dark:bg-black/50 border border-black/5 dark:border-white/10 px-6 py-3 shadow-sm transition-all hover:shadow-md">
+            
+            <!-- Logo -->
+            <div class="flex items-center gap-3 text-text-main dark:text-white">
+                <div class="flex size-8 items-center justify-center rounded-full bg-primary text-black">
+                    <span class="material-symbols-outlined text-xl">code_blocks</span>
+                </div>
+                <h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Crevo Academy</h2>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+                <div class="flex items-center gap-6">
+                    <a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="index.html">Home</a>
+                    <a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="./about.html">About</a>
+                    <a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="./contact.html">Contact</a>
+                </div>
+                <button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary text-black text-sm font-bold leading-normal tracking-[0.015em] hover:bg-purple-400 transition-colors transform hover:-translate-y-0.5 active:translate-y-0 shadow-sm hover:shadow-purple-200 dark:hover:shadow-none">
+                    <span class="truncate">ENROLL NOW</span>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="openMenu" class="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+            
+        </header>
+    </div>
+
+    <!-- ========================================
+         MAIN CONTENT
+    ========================================= -->
+    <main class="flex flex-col items-center pt-28 px-4 sm:px-10 pb-20 w-full max-w-[1400px] mx-auto gap-24">
+        
+        <!-- ========================================
+             HERO SECTION
+        ========================================= -->
+        <section class="w-full flex flex-col gap-6 text-center items-center max-w-[900px]">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/10 border border-primary/20 w-fit">
+                <span class="material-symbols-outlined text-primary text-sm">school</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-text-main dark:text-white/80">Our Programs</span>
+            </div>
+            
+            <h1 class="text-5xl sm:text-6xl font-black leading-[1.1] tracking-[-0.033em]">
+                Explore Our <span class="relative inline-block px-2">Curriculum<span class="absolute inset-0 bg-primary -z-10 -rotate-2 rounded-lg opacity-80 mix-blend-multiply dark:mix-blend-normal"></span></span>
+            </h1>
+            
+            <p class="text-lg sm:text-xl font-normal leading-relaxed text-text-main/80 dark:text-white/70 max-w-[700px]">
+                Transform your creative passion into professional skills. Choose from our comprehensive programs designed to make you industry-ready.
+            </p>
+        </section>
+        
+        <!-- ========================================
+             CURRICULUM CARDS - SIDE BY SIDE GRID
+        ========================================= -->
+        <section class="w-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Graphics Design -->
+                <div class="group flex flex-col rounded-[2.5rem] bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 overflow-hidden transition-all hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10">
+                    <!-- Visual -->
+                    <div class="relative h-[200px] bg-gradient-to-br from-purple-200 to-pink-200 dark:from-purple-900/30 dark:to-pink-900/30 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary opacity-20" style="font-size: 120px;">brush</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="p-8 flex flex-col gap-4 flex-1">
+                        <div class="size-14 rounded-full bg-primary flex items-center justify-center text-black shadow-lg group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-3xl">palette</span>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <h2 class="text-2xl font-black leading-tight">Graphics Design</h2>
+                            <p class="text-text-main/70 dark:text-white/70 text-sm leading-relaxed">
+                                Master visual communication with design principles, color theory, typography, and tools like Adobe Creative Suite, Figma, and Canva.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold">Photoshop</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold">Illustrator</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold">Figma</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-3 mt-auto pt-4">
+                            <button class="flex h-11 cursor-pointer items-center justify-center rounded-full px-6 bg-primary text-black text-sm font-bold hover:bg-yellow-400 transition-all">
+                                Learn More
+                            </button>
+                            <button class="flex h-11 cursor-pointer items-center justify-center rounded-full px-6 border-2 border-black/10 dark:border-white/10 text-sm font-bold hover:bg-gray-50 dark:hover:bg-white/10 transition-all">
+                                View Syllabus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Website Development -->
+                <div class="group flex flex-col rounded-[2.5rem] bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 overflow-hidden transition-all hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10">
+                    <!-- Visual -->
+                    <div class="relative h-[200px] bg-gradient-to-br from-blue-200 to-cyan-200 dark:from-blue-900/30 dark:to-cyan-900/30 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary opacity-20" style="font-size: 120px;">code</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="p-8 flex flex-col gap-4 flex-1">
+                        <div class="size-14 rounded-full bg-primary flex items-center justify-center text-black shadow-lg group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-3xl">laptop_chromebook</span>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <h2 class="text-2xl font-black leading-tight">Website Development</h2>
+                            <p class="text-text-main/70 dark:text-white/70 text-sm leading-relaxed">
+                                Build modern, responsive websites from scratch. Master HTML, CSS, JavaScript, and frameworks to create dynamic web applications.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold">HTML/CSS</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold">JavaScript</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold">React</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-3 mt-auto pt-4">
+                            <button class="flex h-11 cursor-pointer items-center justify-center rounded-full px-6 bg-primary text-black text-sm font-bold hover:bg-yellow-400 transition-all">
+                                Learn More
+                            </button>
+                            <button class="flex h-11 cursor-pointer items-center justify-center rounded-full px-6 border-2 border-black/10 dark:border-white/10 text-sm font-bold hover:bg-gray-50 dark:hover:bg-white/10 transition-all">
+                                View Syllabus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Writing -->
+                <div class="group flex flex-col rounded-[2.5rem] bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 overflow-hidden transition-all hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10">
+                    <!-- Visual -->
+                    <div class="relative h-[200px] bg-gradient-to-br from-yellow-200 to-orange-200 dark:from-yellow-900/30 dark:to-orange-900/30 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary opacity-20" style="font-size: 120px;">article</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="p-8 flex flex-col gap-4 flex-1">
+                        <div class="size-14 rounded-full bg-primary flex items-center justify-center text-black shadow-lg group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-3xl">edit_note</span>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <h2 class="text-2xl font-black leading-tight">Content Writing</h2>
+                            <p class="text-text-main/70 dark:text-white/70 text-sm leading-relaxed">
+                                Craft compelling stories and engaging content. Learn copywriting, SEO writing, storytelling techniques that resonate with audiences.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold">Copywriting</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold">SEO</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold">Storytelling</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-3 mt-auto pt-4">
+                            <button class="flex h-11 cursor-pointer items-center justify-center rounded-full px-6 bg-primary text-black text-sm font-bold hover:bg-yellow-400 transition-all">
+                                Learn More
+                            </button>
+                            <button class="flex h-11 cursor-pointer items-center justify-center rounded-full px-6 border-2 border-black/10 dark:border-white/10 text-sm font-bold hover:bg-gray-50 dark:hover:bg-white/10 transition-all">
+                                View Syllabus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Creation -->
+                <div class="group flex flex-col rounded-[2.5rem] bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 overflow-hidden transition-all hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10">
+                    <!-- Visual -->
+                    <div class="relative h-[200px] bg-gradient-to-br from-green-200 to-teal-200 dark:from-green-900/30 dark:to-teal-900/30 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary opacity-20" style="font-size: 120px;">photo_camera</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="p-8 flex flex-col gap-4 flex-1">
+                        <div class="size-14 rounded-full bg-primary flex items-center justify-center text-black shadow-lg group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-3xl">videocam</span>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <h2 class="text-2xl font-black leading-tight">Content Creation</h2>
+                            <p class="text-text-main/70 dark:text-white/70 text-sm leading-relaxed">
+                                Create engaging content for social media and digital platforms. Master video editing, photography, and audience engagement techniques.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold">Video Editing</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold">Photography</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold">Social Media</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-3 mt-auto pt-4">
+                            <button class="flex h-11 cursor-pointer items-center justify-center rounded-full px-6 bg-primary text-black text-sm font-bold hover:bg-yellow-400 transition-all">
+                                Learn More
+                            </button>
+                            <button class="flex h-11 cursor-pointer items-center justify-center rounded-full px-6 border-2 border-black/10 dark:border-white/10 text-sm font-bold hover:bg-gray-50 dark:hover:bg-white/10 transition-all">
+                                View Syllabus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 3D Animation -->
+                <div class="group flex flex-col rounded-[2.5rem] bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 overflow-hidden transition-all hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10">
+                    <!-- Visual -->
+                    <div class="relative h-[200px] bg-gradient-to-br from-indigo-200 to-purple-200 dark:from-indigo-900/30 dark:to-purple-900/30 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary opacity-20" style="font-size: 120px;">animation</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="p-8 flex flex-col gap-4 flex-1">
+                        <div class="size-14 rounded-full bg-primary flex items-center justify-center text-black shadow-lg group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-3xl">view_in_ar</span>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <h2 class="text-2xl font-black leading-tight">3D Animation</h2>
+                            <p class="text-text-main/70 dark:text-white/70 text-sm leading-relaxed">
+                                Bring imagination to life with 3D animation. Learn modeling, rigging, texturing, lighting using Blender and Cinema 4D.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold">Blender</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold">3D Modeling</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/10 text-xs font-semibold">Animation</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-3 mt-auto pt-4">
+                            <button class="flex h-11 cursor-pointer items-center justify-center rounded-full px-6 bg-primary text-black text-sm font-bold hover:bg-yellow-400 transition-all">
+                                Learn More
+                            </button>
+                            <button class="flex h-11 cursor-pointer items-center justify-center rounded-full px-6 border-2 border-black/10 dark:border-white/10 text-sm font-bold hover:bg-gray-50 dark:hover:bg-white/10 transition-all">
+                                View Syllabus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Program Placeholder (Optional 6th card) -->
+                <div class="group flex flex-col rounded-[2.5rem] bg-gradient-to-br from-primary/10 to-purple-200/30 dark:from-primary/5 dark:to-purple-900/10 border-2 border-dashed border-primary/30 overflow-hidden transition-all hover:border-primary/60 hover:shadow-xl hover:shadow-primary/10">
+                    <div class="p-8 flex flex-col gap-4 flex-1 items-center justify-center text-center min-h-[500px]">
+                        <div class="size-16 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-4xl">add_circle</span>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <h2 class="text-2xl font-black leading-tight">More Coming Soon</h2>
+                            <p class="text-text-main/60 dark:text-white/60 text-sm leading-relaxed max-w-[250px]">
+                                We're constantly adding new programs. Stay tuned for exciting announcements!
+                            </p>
+                        </div>
+                        <button class="mt-4 flex h-11 cursor-pointer items-center justify-center rounded-full px-6 bg-primary/10 text-primary text-sm font-bold hover:bg-primary/20 transition-all">
+                            Get Notified
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <!-- ========================================
+             PROGRAM BENEFITS
+        ========================================= -->
+        <section class="w-full">
+            <div class="rounded-[3rem] bg-primary p-12 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 20px 20px;"></div>
+                
+                <div class="relative z-10 text-center mb-10">
+                    <h2 class="text-4xl font-black text-black mb-4">What You'll Get</h2>
+                    <p class="text-black/80 font-medium text-lg">Every program includes these amazing benefits</p>
+                </div>
+                
+                <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-black/5 rounded-[2rem] p-6 text-center">
+                        <span class="material-symbols-outlined text-5xl text-black mb-3">workspace_premium</span>
+                        <h3 class="font-bold text-black mb-2">Certificate</h3>
+                        <p class="text-sm text-black/70">Industry-recognized certification upon completion</p>
+                    </div>
+                    <div class="bg-black/5 rounded-[2rem] p-6 text-center">
+                        <span class="material-symbols-outlined text-5xl text-black mb-3">groups</span>
+                        <h3 class="font-bold text-black mb-2">Community</h3>
+                        <p class="text-sm text-black/70">Access to exclusive creator community</p>
+                    </div>
+                    <div class="bg-black/5 rounded-[2rem] p-6 text-center">
+                        <span class="material-symbols-outlined text-5xl text-black mb-3">support_agent</span>
+                        <h3 class="font-bold text-black mb-2">Mentorship</h3>
+                        <p class="text-sm text-black/70">One-on-one guidance from industry experts</p>
+                    </div>
+                    <div class="bg-black/5 rounded-[2rem] p-6 text-center">
+                        <span class="material-symbols-outlined text-5xl text-black mb-3">work</span>
+                        <h3 class="font-bold text-black mb-2">Portfolio</h3>
+                        <p class="text-sm text-black/70">Build real projects for your portfolio</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ========================================
+             CTA SECTION
+        ========================================= -->
+        <section class="w-full">
+            <div class="rounded-[3rem] bg-black dark:bg-white text-white dark:text-black p-12 text-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px]"></div>
+                <div class="relative z-10 flex flex-col gap-6 items-center max-w-[700px] mx-auto">
+                    <h2 class="text-4xl font-black">Ready to Start Learning?</h2>
+                    <p class="text-lg opacity-90">Choose your path and begin your creative journey today. Get instant access to all course materials.</p>
+                    <button class="mt-4 flex h-14 cursor-pointer items-center justify-center rounded-full px-10 bg-primary text-black text-base font-bold tracking-[0.015em] hover:bg-yellow-400 hover:scale-105 transition-all shadow-lg">
+                        Enroll Now
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ========================================
+             FOOTER
+        ========================================= -->
+        <footer class="w-full border-t border-black/5 dark:border-white/10 pt-16 pb-8">
+            
+            <!-- Footer Content Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                
+                <!-- Brand Column -->
+                <div class="md:col-span-1 flex flex-col gap-4">
+                    <div class="flex items-center gap-3 text-text-main dark:text-white">
+                        <div class="flex size-8 items-center justify-center rounded-full bg-primary text-black">
+                            <span class="material-symbols-outlined text-xl">code_blocks</span>
+                        </div>
+                        <h2 class="text-lg font-bold">Crevo Academy</h2>
+                    </div>
+                    <p class="text-sm text-text-muted dark:text-gray-400">
+                        Empowering the next generation of builders and creators.
+                    </p>
+                    <div class="flex gap-4 mt-2">
+                        <a class="text-text-main dark:text-white hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">thumb_up</span></a>
+                        <a class="text-text-main dark:text-white hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">chat_bubble</span></a>
+                        <a class="text-text-main dark:text-white hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+                    </div>
+                </div>
+                
+                <!-- Platform Links -->
+                <div>
+                    <h3 class="font-bold mb-4">Platform</h3>
+                    <ul class="flex flex-col gap-3 text-sm text-text-muted dark:text-gray-400">
+                        <li><a class="hover:text-primary transition-colors" href="#">Courses</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Mentorship</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Projects</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Company Links -->
+                <div>
+                    <h3 class="font-bold mb-4">Company</h3>
+                    <ul class="flex flex-col gap-3 text-sm text-text-muted dark:text-gray-400">
+                        <li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Links -->
+                <div>
+                    <h3 class="font-bold mb-4">Support</h3>
+                    <ul class="flex flex-col gap-3 text-sm text-text-muted dark:text-gray-400">
+                        <li><a class="hover:text-primary transition-colors" href="#">Help Center</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom Bar -->
+            <div class="border-t border-black/5 dark:border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between text-sm text-text-muted dark:text-gray-400">
+                <p>&copy; 2025 Crevo Academy. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                    <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+                    <a class="hover:text-primary transition-colors" href="#">Contact</a>
+                </div>
+            </div>
+        </footer>
+        
+    </main>
+    
+     <!-- ========================================
+         MOBILE MENU JAVASCRIPT
+    ========================================= -->
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuPanel = document.getElementById('menuPanel');
+        const menuBackdrop = document.getElementById('menuBackdrop');
+        const openMenuBtn = document.getElementById('openMenu');
+        const closeMenuBtn = document.getElementById('closeMenu');
+
+        // Open menu
+        openMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('pointer-events-none');
+            menuBackdrop.classList.remove('opacity-0');
+            menuBackdrop.classList.add('pointer-events-auto');
+            menuPanel.classList.remove('-translate-x-full');
+        });
+
+        // Close menu
+        const closeMenu = () => {
+            menuPanel.classList.add('-translate-x-full');
+            menuBackdrop.classList.add('opacity-0');
+            menuBackdrop.classList.remove('pointer-events-auto');
+            setTimeout(() => {
+                mobileMenu.classList.add('pointer-events-none');
+            }, 300);
+        };
+
+        closeMenuBtn.addEventListener('click', closeMenu);
+        menuBackdrop.addEventListener('click', closeMenu);
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('pointer-events-none')) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>
